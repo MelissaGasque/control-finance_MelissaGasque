@@ -41,7 +41,7 @@ h3{
     width: 18.4375rem;
     height: 2.625rem;
     font-weight: var(--font-weight-3);
-    font-size: var(--font-size-3);
+    font-size: var(--font-size-3);    
 }
 #modal_addValue-text{
     color:var(--color-grey-1);
