@@ -1,0 +1,43 @@
+#modal__controller{
+    width: 26.75rem;
+    height: 22.6rem;
+    margin: auto auto;
+}
+#closeModal{
+    padding: 0.25rem 0.75rem;
+}
+#modalText-p{
+    width: 23.75rem;
+}
+#modal_addValue-text{
+    width: 2.1875rem;
+}
+#modal_addValue-boxNumber{
+    width: 23.75rem;
+}
+#modal_entradaSaida{
+    flex-direction: row;
+}
+#modal_entradaSaida-text{
+    width: auto;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+#modal_entradaSaida-escolha{
+    flex-direction: row;
+}
+.bt-outline{
+    width: 5.0625rem;
+    margin-right: 0.5rem;
+}
+#modal_footer-buttons{
+    justify-content: flex-end;
+}
+.modal_button{
+    width: 6rem;  
+    margin-left: 1rem; 
+}
+#modal_button-inserirValor{
+    width: 7rem;
+}
