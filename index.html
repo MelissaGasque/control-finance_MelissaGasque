@@ -43,19 +43,10 @@
         <p1 id="section_valorTotal-number">R$ 2120,00</p1>
       </section>
       <ul class="section_addCards">
-        <!-- <li class="section_card">
-          <p2 id="card_number">R$40,00</p2>
-          <div class="div_card-LES"> 
-            <div>
-              <p3 id="card_entradaSaida">Entrada</p3>
-            </div>
-            <img src="src/assets/img/trash.svg" id="card_button-lixo" alt="lixeira"></img>
-          </div>
-        </li> -->
-        <div id="sem_registro">
+        <!-- <div id="sem_registro">
           <p id="nenhum_valor">Nenhum Valor Cadastrado</p>
           <p id="registrar_valor">Registrar novo valor</p>
-        </div>
+        </div> -->
       </ul>
     </main>
     <dialog id="modal__controller">
@@ -76,8 +67,13 @@
         <div id="modal_entradaSaida">
           <p id="modal_entradaSaida-text">Tipo de valor</p>
           <div id="modal_entradaSaida-escolha">
-            <button class="bt-outline"  hidden id="0" value="0" name="valueType">Entrada</button>
-            <button class="bt-outline"  hidden id="1" value="1" name="valueType">Saída</button>
+            
+            <input  type="radio" hidden id="0" value="0" name="valueType">
+            <label class="bt-outline" tabindex="0" for="0">Entrada</label>
+
+            <input  type="radio" hidden id="1" value="1" name="valueType">
+            <label class="bt-outline" tabindex="0" for="1">Saída</label>
+
           </div>
         </div>
         <div id="modal_footer-buttons">

@@ -69,12 +69,14 @@
     line-height: 100%;
     border-radius: var(--radius-2);
     padding: 0.4375rem 0.875rem;
+    
 }
-/* #card_button-lixo:hover{
-    background-image: url( "src/assets/img/trash1.sgv");
+#card_button-lixo:hover{
+    filter: invert(29%) sepia(24%) saturate(226%) hue-rotate(169deg) brightness(93%) contrast(87%);
     width: 0.875rem;
     height: 0.875rem;
-} */
+    cursor: pointer;
+}
 
 /* Quando não há cards, aparece uma mensagem */
 #sem_registro{
