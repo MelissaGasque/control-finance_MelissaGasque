@@ -1,5 +1,7 @@
-// cards já adicionados
 function cards(insertedValues){
+    // Limpa a lista de cards
+    document.querySelector(".section_addCards").innerHTML = "";
+
     insertedValues.forEach(card => {
 
         const li = document.createElement("li")
@@ -22,7 +24,7 @@ function cards(insertedValues){
             p3.innerText = "Entrada"
         }
         if(card.categoryID === 1){
-            p3.innerText = "Saída"
+            p3.innerText = "-Saída-"
         }
 
         const img = document.createElement("img")
@@ -31,9 +33,7 @@ function cards(insertedValues){
         img.alt = "lixeira"
 
         img.addEventListener("click", ()=>{
-            const divBox = img.parentElement
-            const limpar = divBox.parentElement
-            limpar.remove()
+            removerCard(card.id);
         })
 
         div.appendChild(p3)
@@ -42,10 +42,46 @@ function cards(insertedValues){
         document.querySelector(".section_addCards").appendChild(li)
     });
 }
-cards(insertedValues)
 
-
-// Adicionando novos Cards
-function addCards(){
-
+//Adicionar objetos na array
+function addObjeto(){
+    const valueInput = document.getElementById("modal_addValue-number");
+    const categoryInput = document.querySelector("input[name='valueType']:checked");
+    const button = document.querySelector("#modal_button-inserirValor")
+    
+    button.addEventListener("click", ()=>{
+        const newElement = {
+            id: insertedValues.length + 1,
+            value: parseFloat(valueInput.value),
+            categoryID: parseInt(categoryInput.value),
+          };
+          
+          insertedValues.push(newElement);
+          cards(insertedValues);
+          console.log(insertedValues)
+    })
 }
+
+// Remover elemento da array
+function removerCard(id) {
+    const index = insertedValues.findIndex((element) => element.id === id);
+    if (index >= 0) {
+        insertedValues.splice(index, 1);
+        cards(insertedValues);
+    }
+}
+
+//Botão Cancelar
+function cancelar(){
+    const button = document.querySelector("#modal_button-cancelar")
+    button.addEventListener("click", ()=>{
+        document.querySelector("#modal_addValue-number").value =""
+
+    })
+}
+
+
+// Inicialização
+cancelar();
+cards(insertedValues);
+addObjeto();

@@ -40,7 +40,7 @@
       </section>
       <section class="section_valorTotal">
         <p1 id="section_valorTotal-text">Soma dos Valores</p1>
-        <p1 id="section_valorTotal-number">R$ 2120,00</p1>
+        <p1 id="section_valorTotal-number">2120</p1>
       </section>
       <ul class="section_addCards">
         <!-- <div id="sem_registro">
@@ -60,20 +60,16 @@
         </div>
         <div id="modal_addValue">
           <p id="modal_addValue-text">Valor</p>
-          <div id="modal_addValue-boxNumber">
-            <p id="modal_addValue-number">R$ 00,00</p>
-          </div>
+          <input type="number" placeholder="R$ 00,00" id="modal_addValue-number" required></input> 
         </div>
         <div id="modal_entradaSaida">
           <p id="modal_entradaSaida-text">Tipo de valor</p>
           <div id="modal_entradaSaida-escolha">
-            
-            <input  type="radio" hidden id="0" value="0" name="valueType">
+            <input  type="radio" hidden id="id0" value="0" name="valueType" required checked>
             <label class="bt-outline" tabindex="0" for="0">Entrada</label>
 
-            <input  type="radio" hidden id="1" value="1" name="valueType">
+            <input  type="radio" hidden id="id1" value="1" name="valueType" required>
             <label class="bt-outline" tabindex="0" for="1">Saída</label>
-
           </div>
         </div>
         <div id="modal_footer-buttons">
