@@ -1,5 +1,31 @@
+//Filtragem das entradas e saídas
+function filtroEntrada(insertedValues){
+    const buttonEntradas = document.querySelector("#nav_button-entradas")
+    buttonEntradas.addEventListener("click", ()=>{
+    const entradas = insertedValues.filter(insertedValues => insertedValues.categoryID === 0)
+    cards(entradas)
+   })
+}
+
+function filtroSaídas(insertedValues){
+    const buttonSaidas = document.querySelector("#nav_button-saidas")
+    buttonSaidas.addEventListener("click", ()=>{
+        const saidas = insertedValues.filter(insertedValues => insertedValues.categoryID === 1)
+        cards(saidas)
+}) 
+}
+
+function semFiltro(insertedValues){
+    const buttonTodos = document.querySelector("#nav_button-todos")
+    buttonTodos.addEventListener("click", ()=>{
+        const todos = insertedValues.filter(insertedValues => insertedValues.categoryID === 0 || insertedValues.categoryID === 1)
+        cards(todos)
+    })
+}
+
+//Cards já existentes
 function cards(insertedValues){
-    // Limpa a lista de cards
+    // Limpa a lista de cards: Quando um card é adicionado, a lista reinicia e imprime apenas a array
     document.querySelector(".section_addCards").innerHTML = "";
 
     insertedValues.forEach(card => {
@@ -27,6 +53,7 @@ function cards(insertedValues){
             p3.innerText = "-Saída-"
         }
 
+
         const img = document.createElement("img")
         img.id = "card_button-lixo"
         img.src="src/assets/img/trash.svg"
@@ -43,7 +70,7 @@ function cards(insertedValues){
     });
 }
 
-//Adicionar objetos na array
+//Adicionar elementos na array
 function addObjeto(){
     const valueInput = document.getElementById("modal_addValue-number");
     const categoryInput = document.querySelector("input[name='valueType']:checked");
@@ -58,7 +85,7 @@ function addObjeto(){
           
           insertedValues.push(newElement);
           cards(insertedValues);
-          console.log(insertedValues)
+          valorTotal(insertedValues) // A soma será realizada sempre que houver uma adição
     })
 }
 
@@ -69,19 +96,60 @@ function removerCard(id) {
         insertedValues.splice(index, 1);
         cards(insertedValues);
     }
+    valorTotal(insertedValues)
+    semCards(insertedValues)
 }
 
-//Botão Cancelar
+//Somar os valores da array
+function valorTotal(insertedValues){
+    const valor = document.querySelector("#section_valorTotal-number")
+    const soma = insertedValues.reduce((acumulator, values)=>{
+    if(values.categoryID === 0){
+       return  acumulator + values.value
+    }else if(values.categoryID === 1){
+        return acumulator - values.value
+    }
+    return acumulator
+}, 0 )
+    valor.innerHTML = `R$ ${soma.toFixed(2)}`
+}    
+
+// Array sem registros
+function semCards(insertedValues){
+    const ul = document.querySelector(".section_addCards")
+    if(insertedValues.length === 0){
+        const div = document.createElement("div")
+        div.classList.add("section_card")
+        div.id = id="sem_registro"
+    
+        const p1 = document.createElement("p")
+        p1.id = "nenhum_valor"
+        p1.innerText = "Nenhum Valor Cadastrado"
+
+        const p2 = document.createElement("p")
+        p2.id = "registrar_valor"
+        p2.innerText = "Registrar novo valor"
+
+        div.append(p1, p2)
+        ul.appendChild(div)
+    }
+}
+
+//Botão Cancelar Modal
 function cancelar(){
     const button = document.querySelector("#modal_button-cancelar")
     button.addEventListener("click", ()=>{
         document.querySelector("#modal_addValue-number").value =""
-
     })
 }
 
 
 // Inicialização
+filtroEntrada(insertedValues)
+filtroSaídas(insertedValues)
+semFiltro(insertedValues)
+semCards(insertedValues)
 cancelar();
 cards(insertedValues);
 addObjeto();
+valorTotal(insertedValues)

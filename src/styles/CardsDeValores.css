@@ -80,6 +80,8 @@
 
 /* Quando não há cards, aparece uma mensagem */
 #sem_registro{
+    display: flex;
+    flex-direction: column;
     background-color: var(--color-grey-5);
     border: 1.5px solid var(--color-grey-3);
     border-radius: var(--radius-1);
