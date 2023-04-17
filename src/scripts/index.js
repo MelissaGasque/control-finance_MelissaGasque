@@ -53,7 +53,6 @@ function cards(insertedValues){
             p3.innerText = "-Saída-"
         }
 
-
         const img = document.createElement("img")
         img.id = "card_button-lixo"
         img.src="src/assets/img/trash.svg"
@@ -75,19 +74,30 @@ function addObjeto(){
     const valueInput = document.getElementById("modal_addValue-number");
     const categoryInput = document.querySelector("input[name='valueType']:checked");
     const button = document.querySelector("#modal_button-inserirValor")
-    
+
+    // Adiciona evento de input para remover letra "e"
+    valueInput.addEventListener("input", () => {
+        valueInput.value = valueInput.value.replace("e", "");
+    });
+
     button.addEventListener("click", ()=>{
-        const newElement = {
-            id: insertedValues.length + 1,
-            value: parseFloat(valueInput.value),
-            categoryID: parseInt(categoryInput.value),
-          };
-          
-          insertedValues.push(newElement);
-          cards(insertedValues);
-          valorTotal(insertedValues) // A soma será realizada sempre que houver uma adição
+        const value = parseFloat(valueInput.value.replace("e", ""));
+
+        if (!isNaN(value)) {
+            const newElement = {
+                id: insertedValues.length + 1,
+                value: parseFloat(valueInput.value),
+                categoryID: parseInt(categoryInput.value),
+            };
+            
+            insertedValues.push(newElement);
+            cards(insertedValues);
+            valorTotal(insertedValues) // A soma será realizada sempre que houver uma adição
+        }
+        console.log(insertedValues)
     })
-}
+
+}   
 
 // Remover elemento da array
 function removerCard(id) {
