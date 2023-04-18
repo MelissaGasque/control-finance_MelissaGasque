@@ -68,12 +68,24 @@ function cards(insertedValues){
         document.querySelector(".section_addCards").appendChild(li)
     });
 }
+// let botao =document.querySelectorAll("input[name='valueType']")
+// console.log(botao)
+// let findSelected = () =>{
+// let selected = document.querySelector("input[name='valueType']:checked").value
+// console.log(selected)
+// }
+// botao.forEach(botao => {
+//     botao.addEventListener("change", findSelected)
+//     console.log
+// });
+// findSelected()
 
 //Adicionar elementos na array
 function addObjeto(){
     const valueInput = document.getElementById("modal_addValue-number");
-    const categoryInput = document.querySelector("input[name='valueType']:checked");
+    const categoryInput = document.querySelectorAll("input[name='valueType']");
     const button = document.querySelector("#modal_button-inserirValor")
+    
 
     // Adiciona evento de input para remover letra "e"
     valueInput.addEventListener("input", () => {
@@ -81,22 +93,27 @@ function addObjeto(){
     });
 
     button.addEventListener("click", ()=>{
+        let id = 0
         const value = parseFloat(valueInput.value.replace("e", ""));
+
+        if(categoryInput[1].checked === true){
+            id = 1
+        }else{
+            id = 0
+        }
 
         if (!isNaN(value)) {
             const newElement = {
                 id: insertedValues.length + 1,
                 value: parseFloat(valueInput.value),
-                categoryID: parseInt(categoryInput.value),
+                categoryID: id,
             };
-            
             insertedValues.push(newElement);
             cards(insertedValues);
             valorTotal(insertedValues) // A soma será realizada sempre que houver uma adição
         }
-        console.log(insertedValues)
+       
     })
-
 }   
 
 // Remover elemento da array
