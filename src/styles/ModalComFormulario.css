@@ -7,7 +7,20 @@
     margin: 3rem auto;  
     border:none;
 }
-
+.dialog-animation{
+    animation-name: dialog-animation;
+    animation-duration: 0.2s;
+    animation-timing-function: ease;
+}
+@keyframes dialog-animation {
+    from {
+      top:-100%
+    }
+    to {
+      top:0%
+    }
+}
+  
 #modal_header{
     display: flex;
     justify-content: space-between;
