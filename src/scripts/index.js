@@ -44,13 +44,15 @@ function cards(insertedValues){
         const div = document.createElement("div")
        
         const p3 = document.createElement("p3")
-        p3.id ="card_entradaSaida"
+        p3.classList.add("card_entradaSaida")
+
         p3.innerText = card.categoryID;
         if(card.categoryID === 0){
             p3.innerText = "Entrada"
         }
         if(card.categoryID === 1){
-            p3.innerText = "-Saída-"
+            p3.innerText = "Saída"
+            p3.id="card_Saida"
         }
 
         const img = document.createElement("img")
@@ -68,23 +70,12 @@ function cards(insertedValues){
         document.querySelector(".section_addCards").appendChild(li)
     });
 }
-// let botao =document.querySelectorAll("input[name='valueType']")
-// console.log(botao)
-// let findSelected = () =>{
-// let selected = document.querySelector("input[name='valueType']:checked").value
-// console.log(selected)
-// }
-// botao.forEach(botao => {
-//     botao.addEventListener("change", findSelected)
-//     console.log
-// });
-// findSelected()
-
 //Adicionar elementos na array
 function addObjeto(){
     const valueInput = document.getElementById("modal_addValue-number");
     const categoryInput = document.querySelectorAll("input[name='valueType']");
-    const button = document.querySelector("#modal_button-inserirValor")
+    const button = document.querySelector("#modal_button-inserirValor");
+    const modalController = document.querySelector("#modal__controller")
     
 
     // Adiciona evento de input para remover letra "e"
@@ -112,7 +103,7 @@ function addObjeto(){
             cards(insertedValues);
             valorTotal(insertedValues) // A soma será realizada sempre que houver uma adição
         }
-       
+        modalController.close()
     })
 }   
 

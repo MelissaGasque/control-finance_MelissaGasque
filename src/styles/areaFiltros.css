@@ -33,9 +33,14 @@ nav{
     line-height: 100%;
     cursor: pointer;
 }
-.nav_button:hover{
+.nav_button:hover {
     background-color: var(--color-brand-3);
     color:var(--color-brand-1);
     border: solid 1.5px var(--color-brand-1);
     width: 6rem;
+}
+.nav_button:focus{
+    color:var(--color-brand-1);
+    background-color: var(--color-brand-3);
+    border: solid 1.5px var(--color-brand-1);
 }

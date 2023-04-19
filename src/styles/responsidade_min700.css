@@ -32,7 +32,7 @@
         display: flex;
         justify-content: flex-end;        
     }
-    #card_entradaSaida{
+    .card_entradaSaida{
         margin: 3rem;
     }
     #card_button-lixo{

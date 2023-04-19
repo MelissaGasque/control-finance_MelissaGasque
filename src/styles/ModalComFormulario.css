@@ -96,6 +96,10 @@ h3{
     padding: 0.5rem 0.875rem;
     cursor: pointer;
 }
+.bt-outline:hover{
+    color:var(--color-grey-1);
+    background-color: var(--color-grey-4);
+}
 #modal_footer-buttons{
     margin: 1rem 0rem;
     display: flex;
